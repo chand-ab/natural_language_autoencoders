@@ -1,0 +1,106 @@
+Fetching 38 files:   0%|          | 0/38 [00:00<?, ?it/s]Fetching 38 files: 100%|██████████| 38/38 [00:00<00:00, 10136.97it/s]
+Fetching 22 files:   0%|          | 0/22 [00:00<?, ?it/s]Fetching 22 files: 100%|██████████| 22/22 [00:00<00:00, 9459.22it/s]
+home: /home/abhinav
+NLA repo: /home/abhinav/natural_language_autoencoders
+SGLang checkout: /home/abhinav/sglang
+HF cache: /home/abhinav/.cache/huggingface
+actor checkpoint: /home/abhinav/.cache/huggingface/hub/models--kitft--nla-gemma3-27b-L41-av/snapshots/4e721238131ffb8348cff260fe81b8b34a270a0d
+AR checkpoint: /home/abhinav/.cache/huggingface/hub/models--kitft--nla-gemma3-27b-L41-ar/snapshots/aa2f29723c4807caf5f665dac004998df71b7cfb
+notebook device: cuda:0
+2.9.1+cu128 True
+LD_LIBRARY_PATH: /home/abhinav/.local/lib:
+CPATH: /home/abhinav/.local/share/uv/python/cpython-3.10.20-linux-x86_64-gnu/include/python3.10:
+SGLang is already healthy at http://127.0.0.1:30000
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:09,  1.12it/s]Loading checkpoint shards:  17%|█▋        | 2/12 [00:01<00:08,  1.20it/s]Loading checkpoint shards:  25%|██▌       | 3/12 [00:02<00:07,  1.21it/s]Loading checkpoint shards:  33%|███▎      | 4/12 [00:03<00:06,  1.21it/s]Loading checkpoint shards:  42%|████▏     | 5/12 [00:04<00:05,  1.20it/s]Loading checkpoint shards:  50%|█████     | 6/12 [00:05<00:05,  1.20it/s]Loading checkpoint shards:  58%|█████▊    | 7/12 [00:05<00:04,  1.19it/s]Loading checkpoint shards:  67%|██████▋   | 8/12 [00:06<00:03,  1.19it/s]Loading checkpoint shards:  75%|███████▌  | 9/12 [00:07<00:02,  1.17it/s]Loading checkpoint shards:  83%|████████▎ | 10/12 [00:08<00:01,  1.19it/s]Loading checkpoint shards:  92%|█████████▏| 11/12 [00:09<00:00,  1.20it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:09<00:00,  1.29it/s]
+[NLAClient] 4e721238131ffb8348cff260fe81b8b34a270a0d: d_model=5376 inj_scale=60000.0 embed_scale=73.32 inj_char='㈜'(id=246566)
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:03,  1.88it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:01<00:03,  1.82it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:01<00:02,  1.81it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:02<00:02,  1.78it/s]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:02<00:01,  1.76it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:03<00:01,  1.75it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:03<00:00,  1.76it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  2.02it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  1.86it/s]
+Some weights of Gemma3ForCausalLM were not initialized from the model checkpoint at /home/abhinav/.cache/huggingface/hub/models--kitft--nla-gemma3-27b-L41-ar/snapshots/aa2f29723c4807caf5f665dac004998df71b7cfb and are newly initialized: ['model.norm.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[NLACritic] 42 layers  d_model=5376  mse_scale=73.32
+Target and AV client ready
+
+======================================================================
+CONFIG: task= ioi_task  n=5
+======================================================================
+The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+
+--- sample 1/5  |  gold='Jessie' ---
+  [baseline]  pred='the'           correct=False
+  explanation : Educational grammar/vocabulary lesson format: a pedagogical example illustrating sentence structure and word usage, explaining a brief shopping trip.
+
+The sentence "She bought a banana. Maggie gave a pear to" signals a concrete example of a kind act or gift, implying a story about a fruit exchange o
+  [nla]       pred='her'           correct=False
+  [para-medium] text : This lesson on grammar and vocabulary uses a practical example – a short narrative about a shopping experience – to demonstrate how sentences are constructed and words are used.
+
+The partial sentence, "She bought a banana. Maggie gave a pear to," serves as a clear illustration of generosity or a gif
+  [para-medium]      pred='her'           correct=False
+  [para-heavy] text : A teaching sequence, using a shopping scenario, demonstrates how sentences are built and words function. The fragment "She bought a banana. Maggie gave a pear to" hints at a narrative—perhaps a simple exchange of produce, or a purchase made somewhere like a market, and suggests a gesture of generosi
+  [para-heavy]      pred='her'           correct=False
+
+--- sample 2/5  |  gold='Doris' ---
+  [baseline]  pred='Doris'         correct=True
+  explanation : Educational grammar/language textbook register, explaining sentence structure with examples of simple sentences in a shop or market scene (British English).
+
+The sentence "She bought a berry. She gave a banana to" introduces a concrete example of a transaction involving berries, implying a specific 
+  [nla]       pred='the'           correct=False
+  [para-medium] text : This excerpt comes from a British English language learning resource, likely a grammar textbook, and uses a shopping or market setting to illustrate basic sentence construction.
+
+As a demonstration, the sequence "She bought a berry. She gave a banana to" depicts a simple exchange, suggesting a purch
+  [para-medium]      pred='the'           correct=False
+  [para-heavy] text : To illustrate basic sentence construction, this teaching material – a grammar guide geared toward learners – uses a British-English setting like a shop or market. Consider the sequence: "She bought a berry. She gave a banana to." This isn't just about fruit; it suggests an actual giving or trade. Th
+  [para-heavy]      pred='the'           correct=False
+
+--- sample 3/5  |  gold='Ginger' ---
+  [baseline]  pred='Ginger'        correct=True
+  explanation : Educational/linguistic activity format: a pedagogical lesson explaining grammatical patterns, likely a short story or anecdote about a commute.
+
+The sentence "She gave a banana to" introduces a specific action or instance of the girl giving a grape, establishing a concrete example of a charitable or
+  [nla]       pred='Ginger'        correct=True
+  [para-medium] text : This learning exercise takes the form of a teaching moment focused on grammar, and probably uses a brief narrative – perhaps a story about traveling to work or school – to illustrate grammatical principles.
+
+The phrase "She gave a banana to" serves as a clear, specific illustration of the girl perfo
+  [para-medium]      pred='her'           correct=False
+  [para-heavy] text : The teaching moment centers on grammar, probably illustrated with a relatable narrative – think a bus trip.  Specifically, the phrase "She gave a banana to" isn't just *about* giving; it's a demonstration, a real-world instance of someone being kind or returning a favor on the bus.  And the very las
+  [para-heavy]      pred='Ginger'        correct=True
+
+--- sample 4/5  |  gold='Harriet' ---
+  [baseline]  pred='the'           correct=False
+  explanation : Educational/linguistic register with a structured narrative about a scene in a cafe, describing a short story or lesson about social interactions.
+
+The sentence "She gave a mango drink to" introduces a concrete example of a spontaneous action or gift, implying a specific incident or item given at th
+  [nla]       pred='the'           correct=False
+  [para-medium] text : This text analyzes language used in educational settings, specifically focusing on a narrative depicting a cafe scene and intended to illustrate principles of social behavior.
+
+The phrase "She gave a mango drink to" serves as a practical illustration of an unprompted act of kindness or a present, su
+  [para-medium]      pred='the'           correct=False
+  [para-heavy] text : A cafe setting is used to illustrate a lesson in how people relate, framed as a story told in formal language. The phrase "She gave a mango drink to" signals a particular, unplanned act of generosity – a specific thing offered at the counter. This fragment, ending with "gave a mango to," sets up a c
+  [para-heavy]      pred='the'           correct=False
+
+--- sample 5/5  |  gold='Janet' ---
+  [baseline]  pred='a'             correct=False
+  explanation : Educational/narrative activity format: a story about a shop or market scene with a lesson about sales and kindness.
+
+The sentence beginning "The produce worker gave a grape to" establishes a specific anecdote or action, implying a humorous or simple act of generosity by a produce stand worker at a g
+  [nla]       pred='a'             correct=False
+  [para-medium] text : This learning experience takes the form of a story set in a store or marketplace, designed to teach principles of both commerce and considerate behavior.
+
+The phrase "The produce worker gave a grape to..." initiates a particular, illustrative event – likely a lighthearted instance of a grocery store
+  [para-medium]      pred='a'             correct=False
+  [para-heavy] text : A learning experience is structured as a tale centered on a commercial setting – a shop or marketplace – designed to illustrate principles of both commerce and considerate behavior.
+
+The phrase "gave a grape to" initiates a particular, likely lighthearted, instance of a fruit vendor's charitable imp
+  [para-heavy]      pred='a'             correct=False
+
+----------------------------------------------------------------------
+SUMMARY  task=ioi_task  len_data=5
+  acc_baseline (no NLA)       = 0.400
+  acc_nla (round-trip)        = 0.200
+  acc_para_medium (paraphrase)= 0.000
+  acc_para_heavy (paraphrase) = 0.200
+  avg_para_medium_overlap     = 0.389
+  avg_para_heavy_overlap      = 0.348
+  para_medium_low_overlap_count = 0
+  para_heavy_low_overlap_count  = 0
+----------------------------------------------------------------------
+

@@ -23,6 +23,7 @@ dependencies = [
     "ipywidgets>=8.1.8",
     "ipykernel>=7.3.0",
     "matplotlib>=3.10.9",
+    "accelerate>=1.14.0",
 ]
 # NOT pip-installable here — install separately per docs/setup.md:
 #   miles    : git clone radixark/miles, build_conda.sh, then git apply nla/miles_patches/*.patch

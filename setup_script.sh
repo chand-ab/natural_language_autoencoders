@@ -14,7 +14,7 @@ wget -qO- https://astral.sh/uv/install.sh | sh
 
 # Make sure uv is on PATH (in case .zshrc wasn't updated by installer)
 export PATH="$HOME/.local/bin:$PATH"
-source ~/.zshrc
+true  # neutralized: p10k zsh-isms abort bash set -e (PATH already exported above)
 
 uv --version
 
@@ -67,7 +67,7 @@ export CPATH=$HOME/.local/include:$CPATH
 if ! grep -q 'HOME/.local/lib:\$LD_LIBRARY_PATH' ~/.zshrc 2>/dev/null; then
     echo 'export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH' >> ~/.zshrc
 fi
-source ~/.zshrc
+true  # neutralized: p10k zsh-isms abort bash set -e (PATH already exported above)
 
 # --- Python.h headers for the correct 3.10 uv-managed install (needed for triton/sgl_kernel builds) ---
 cd ~/natural_language_autoencoders
@@ -83,14 +83,14 @@ rm -rf ~/.triton/cache
 # --- sglang: intentionally NOT managed via uv add/pyproject.toml (see comment in pyproject.toml).
 # Install it LAST, after uv sync, via uv pip install directly into the venv.
 # Do not run `uv sync` or bare `uv run` again after this without re-checking sglang survives it —
-# use /home/kaylee/natural_language_autoencoders/.venv/bin/python directly where possible.
-uv pip install "sglang[all]>=0.5.6" --python /home/kaylee/natural_language_autoencoders/.venv/bin/python
+# use /home/abhinav/natural_language_autoencoders/.venv/bin/python directly where possible.
+uv pip install "sglang[all]==0.5.6.post2" --python /home/abhinav/natural_language_autoencoders/.venv/bin/python
+# transformers 4.57.1 caps kernels at <=0.9; newer versions break on py3.10 (PEP604 in hf_hub strict dataclass)
+uv pip install "kernels<=0.9,>=0.6.1" --python /home/abhinav/natural_language_autoencoders/.venv/bin/python
 
 # Final verification
-uv run python -c "import transformers, sglang, torch; print('transformers:', transformers.__version__); print('sglang: ok'); print('torch:', torch.__version__)"
+.venv/bin/python -c "import transformers, sglang, torch; print('transformers:', transformers.__version__); print('sglang: ok'); print('torch:', torch.__version__)"
 
 
-git config --global user.name "Kaylee Vo"
-git config --global user.email "kayleeyvo@gmail.com"
 
 echo "Setup complete."

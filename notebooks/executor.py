@@ -8,9 +8,9 @@ from __future__ import annotations
 # VISIBLE_GPUS are the physical GPU IDs assigned to you, comma-separated.
 # After CUDA masking, the first listed physical GPU becomes cuda:0 in this notebook.
 # SGLANG_PHYSICAL_GPU is the physical GPU reserved for the SGLang AV server.
-USER_NAME = "kaylee"
-VISIBLE_GPUS = "0,1"
-SGLANG_PHYSICAL_GPU = "1"
+USER_NAME = "abhinav"
+VISIBLE_GPUS = "5,6"
+SGLANG_PHYSICAL_GPU = "6"
 LOCAL_DEVICE = "cuda:0"
 # -----------------------------------------------------------------------------
 
@@ -164,13 +164,13 @@ if torch.cuda.is_available():
     for i in range(torch.cuda.device_count()):
         print(f"cuda:{i}", torch.cuda.get_device_name(i))
 
-UV_PYTHON_INCLUDE = "/home/kaylee/.local/share/uv/python/cpython-3.10.20-linux-x86_64-gnu/include/python3.10"
+UV_PYTHON_INCLUDE = "/home/abhinav/.local/share/uv/python/cpython-3.10.20-linux-x86_64-gnu/include/python3.10"
 assert os.path.exists(os.path.join(UV_PYTHON_INCLUDE, "Python.h")), "Python.h not found at that path"
 
 os.environ["CPATH"] = f"{UV_PYTHON_INCLUDE}:{os.environ.get('CPATH', '')}"
 print("CPATH now:", os.environ["CPATH"])
 
-REAL_LIBNUMA_DIR = "/home/kaylee/.local/lib"
+REAL_LIBNUMA_DIR = "/home/abhinav/.local/lib"
 assert os.path.exists(os.path.join(REAL_LIBNUMA_DIR, "libnuma.so.1")), "libnuma.so.1 not found there"
 
 os.environ["LD_LIBRARY_PATH"] = f"{REAL_LIBNUMA_DIR}:{os.environ.get('LD_LIBRARY_PATH', '')}"
@@ -738,7 +738,7 @@ MAX_NEW_TOKENS = 256
 SEED = 0
 
 DATA_DIR = Path("datasets")
-OUT_DIR = Path("/mnt/ssd-1/soar-nla/kaylee")
+OUT_DIR = Path("/mnt/ssd-1/soar-nla/abhinav")
 RESULTS_CACHE = OUT_DIR / "fv_shot_sweep_results.json"
 CASE_SENSITIVE_TASKS = {"capitalize"}
 
