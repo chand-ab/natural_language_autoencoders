@@ -6,3 +6,4 @@ build/
 dist/
 notebooks/downloader.sh
 .vscode
+results/
